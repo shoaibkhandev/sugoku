@@ -9,15 +9,6 @@ export default function Task() {
     const [boardData, setBoardData] = useState([])
     const [gameStatus, setGameStatus] = useState('unsolved')
 
-    const getBoardData = async () => {
-        try {
-            const { data } = await axios.get(`board?difficulty=${difficulty}`);
-            setBoardData(data.board)
-        } catch (error) {
-            console.error(error);
-        }
-    };
-
     const solveBoard = async () => {
         try {
             const { data } = await axios.post(`solve`, {
@@ -31,6 +22,14 @@ export default function Task() {
     };
 
     useEffect(() => {
+        const getBoardData = async () => {
+            try {
+                const { data } = await axios.get(`board?difficulty=${difficulty}`);
+                setBoardData(data.board)
+            } catch (error) {
+                console.error(error);
+            }
+        };
         getBoardData()
     }, [difficulty])
 
