@@ -38,7 +38,6 @@ export default function Home() {
     }
 
     const solveBoard = () => {
-        console.log(boardData)
         const inputValid = isValid(boardData)
         if (!inputValid) {
             inputIsInvalid()
