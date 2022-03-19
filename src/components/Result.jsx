@@ -1,11 +1,11 @@
 
-export default function Controls({ difficulty, gameStatus }) {
+export default function Controls({ difficulty, gameStatus, validateBoard }) {
     return (
         <div>
             <div className='mb-3'>
                 <div className='flex flex-wrap justify-between items-center'>
                     <div>
-                        <button className='hover:bg-gray-200 py-2 px-4 rounded-l-lg border'>Validate</button>
+                        <button onClick={validateBoard} className='hover:bg-gray-200 py-2 px-4 rounded-l-lg border'>Validate</button>
                         <button className='py-2 px-4 font-bold rounded-r-lg border'>{gameStatus}</button>
                     </div>
                     <div>
