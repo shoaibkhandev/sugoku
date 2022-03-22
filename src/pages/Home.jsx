@@ -4,13 +4,11 @@ import Controls from '../components/Controls'
 import Result from '../components/Result'
 import SolveButton from '../components/SolveButton'
 import axios from '../axios';
-import { BOARD_ROWS } from '../constants'
-
-const ROWS = BOARD_ROWS
+import { BOARD_ROWS, BOARD_DATA } from '../constants'
 
 export default function Home() {
     const [difficulty, setDifficulty] = useState('easy')
-    const [boardData, setBoardData] = useState([])
+    const [boardData, setBoardData] = useState(BOARD_DATA)
     const [gameStatus, setGameStatus] = useState('unsolved')
 
     const fetchBoardData = useCallback(async (difficultyLevel = 'easy') => {
@@ -32,7 +30,7 @@ export default function Home() {
         const board = Array.from(Array(9).fill(null), () => new Array(9).fill(null));
         Object.entries(puzzle).forEach(([key, value]) => {
             const [row, column] = key.split('')
-            board[ROWS.indexOf(row)][column - 1] = Number(value)
+            board[BOARD_ROWS.indexOf(row)][column - 1] = Number(value)
         })
         setBoardData(board)
     }
